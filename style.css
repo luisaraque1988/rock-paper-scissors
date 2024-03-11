@@ -10,22 +10,24 @@ body {
         font-weight: 750;
         margin: 50px;
         padding: 20px;
-        color: white;
+        color: rgb(51, 53, 66);
     }
 
     button {
         font-size: 18px;
+        width: 90px;
         color: white;
-        background-color: rgb(46, 45, 45);
+        background-color: rgb(74, 71, 71);
         border-radius: 8px;
+        padding: 5px;
     }
     
     ul{
         font-size: 18px;
-        color: white;
+        color: rgb(51, 53, 66);
         list-style-type: none;
 
-            #totalScore {
+            .totalScore {
                 font-size: 28px;
                 font-weight: 800px;
             }
@@ -34,5 +36,6 @@ body {
     #resultRound {
         font-size: 24px;
         color: rgb(16, 50, 92);
+        margin: 20px;
     }
 }

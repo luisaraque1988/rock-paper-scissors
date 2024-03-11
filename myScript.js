@@ -20,7 +20,7 @@ function playOneRound(playerSelection, computerSelection) {
         result = 'It is a Tie!'
     }
 
-    if (user === 'rock' && computerSelection === '3') {
+    if (user === 'rock' && computerSelection === 'scissors') {
         result = 'You win! Rock beats scissors';
     } else if (user === 'scissors' && computerSelection === 'rock'){
         result = 'Computer wins! Rock beats scissors'
@@ -37,13 +37,18 @@ function playOneRound(playerSelection, computerSelection) {
     return result;
 }
 
+const body = document.querySelector("body");
 const buttons = document.querySelectorAll('.playButton');
 const buttonContainer = document.querySelector("#buttonContainer");
+const list = document.querySelector("ul");
 const resultPlayer = document.querySelector('#resultPlayer');
 const resultComputer = document.querySelector("#resultComputer");
-const totalScore = document.querySelector("#totalScore");
+const totalScore = document.createElement("li");
 const resultRound = document.querySelector("#resultRound")
-const resetButton = document.querySelector(".resetButton");
+const resetButton = document.createElement("Button");
+resetButton.classList.add("resetButton");
+resetButton.textContent = "Reset";
+totalScore.classList.add("totalScore");
 
 
 let computerCount = 0;
@@ -70,6 +75,9 @@ buttons.forEach(function (i) {
         
         if (computerCount == 5) {
             totalScore.textContent = "Result = Computer wins, it beats you 5 times";
+            list.appendChild(totalScore);
+            body.appendChild(resetButton);
+
             resetButton.addEventListener("click", function() {
                 playerCount = 0;
                 computerCount = 0;
@@ -77,9 +85,14 @@ buttons.forEach(function (i) {
                 resultComputer.textContent = "Computer count = 0";
                 totalScore.textContent = "Result = ";
                 resultRound.textContent = "";
+                body.removeChild(resetButton);
+                list.removeChild(totalScore);
             })
         } else if (playerCount == 5) {
             totalScore.textContent = "Result = You win, you beat the computer 5 times";
+            list.appendChild(totalScore);
+            body.appendChild(resetButton);
+
             resetButton.addEventListener("click", function() {
                 playerCount = 0;
                 computerCount = 0;
@@ -87,7 +100,11 @@ buttons.forEach(function (i) {
                 resultComputer.textContent = "Computer count = 0";
                 totalScore.textContent = "Result = ";
                 resultRound.textContent = "";
+                body.removeChild(resetButton);
+                list.removeChild(totalScore);
             });
         };
     });
 });
+
+
