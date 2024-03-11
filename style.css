@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgba(152, 236, 236, 0.849);
+
+    h1 {
+        font-size: 45px;
+        font-weight: 750;
+        margin: 50px;
+        padding: 20px;
+        color: white;
+    }
+
+    button {
+        font-size: 18px;
+        color: white;
+        background-color: rgb(46, 45, 45);
+        border-radius: 8px;
+    }
+    
+    ul{
+        font-size: 18px;
+        color: white;
+        list-style-type: none;
+
+            #totalScore {
+                font-size: 28px;
+                font-weight: 800px;
+            }
+    }
+
+    #resultRound {
+        font-size: 24px;
+        color: rgb(16, 50, 92);
+    }
+}

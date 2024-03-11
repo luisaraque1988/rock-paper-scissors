@@ -37,51 +37,14 @@ function playOneRound(playerSelection, computerSelection) {
     return result;
 }
 
-/*function playGame() {
-    
-    let userCount = 0;
-    let computerCount = 0;
-    
-    for(let i = 0; i < 5; i++) {
-        let computerSelection = getComputerChoice();
-        let playerSelection = prompt('Introduce your option');
-        let resultOneRound = playOneRound(playerSelection,computerSelection);
-        console.log(resultOneRound);
+const buttons = document.querySelectorAll('.playButton');
+const buttonContainer = document.querySelector("#buttonContainer");
+const resultPlayer = document.querySelector('#resultPlayer');
+const resultComputer = document.querySelector("#resultComputer");
+const totalScore = document.querySelector("#totalScore");
+const resultRound = document.querySelector("#resultRound")
+const resetButton = document.querySelector(".resetButton");
 
-        if (resultOneRound.slice(0,8) === 'You Win!') {
-            userCount += 1;
-        } else if (resultOneRound.slice(0,14) === 'Computer wins!') {
-            computerCount += 1;
-        }
-    }
-
-    if (userCount > computerCount) {
-        return `You have ${userCount} victories, you Win!`
-    } else {
-        return `The computer has ${computerCount} victories, it Wins!`
-    }
-}
-
-console.log(playGame());*/
-
-const buttons = document.querySelectorAll('button');
-const body = document.querySelector('body');
-
-const results = document.createElement("ul");
-
-const resultPlayer = document.createElement("li");
-resultPlayer.textContent = "Player count = 0";
-
-const resultComputer = document.createElement("li");
-resultComputer.textContent = "Computer count = 0";
-
-const totalScore = document.createElement("li");
-totalScore.textContent = "Result = "
-
-results.appendChild(resultComputer);
-results.appendChild(resultPlayer);
-results.appendChild(totalScore);
-body.appendChild(results);
 
 let computerCount = 0;
 let playerCount = 0;
@@ -92,7 +55,8 @@ buttons.forEach(function (i) {
         let playerSelection = this.innerHTML;
         let computerSelection = getComputerChoice();
         oneRound = playOneRound(playerSelection, computerSelection);
-        alert(oneRound)
+        resultRound.textContent = oneRound;
+        
 
         
         if (oneRound.slice(0, 8) === "You win!") {
@@ -106,9 +70,24 @@ buttons.forEach(function (i) {
         
         if (computerCount == 5) {
             totalScore.textContent = "Result = Computer wins, it beats you 5 times";
+            resetButton.addEventListener("click", function() {
+                playerCount = 0;
+                computerCount = 0;
+                resultPlayer.textContent = "Player count = 0";
+                resultComputer.textContent = "Computer count = 0";
+                totalScore.textContent = "Result = ";
+                resultRound.textContent = "";
+            })
         } else if (playerCount == 5) {
-            totalScore.textContent = "Result = You win, you beat the computer 5 times"
-        }
+            totalScore.textContent = "Result = You win, you beat the computer 5 times";
+            resetButton.addEventListener("click", function() {
+                playerCount = 0;
+                computerCount = 0;
+                resultPlayer.textContent = "Player count = 0";
+                resultComputer.textContent = "Computer count = 0";
+                totalScore.textContent = "Result = ";
+                resultRound.textContent = "";
+            });
+        };
     });
 });
-
